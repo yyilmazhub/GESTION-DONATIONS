@@ -1,0 +1,11 @@
+﻿@model IEnumerable<GestionnaireDonation.Models.DonationModel>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+<h1 class="text-center"><i class="fas fa-coins"></i>Gestionnaire de Donation - Yusuf Yilmaz</h1>
+
+<div id="view-all">
+    @await Html.PartialAsync("_ViewAll", Model) 
+</div>

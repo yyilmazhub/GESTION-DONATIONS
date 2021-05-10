@@ -1,0 +1,67 @@
+﻿@model GestionnaireDonation.Models.DonationModel
+
+@{ Layout = null; }
+
+<div class="row">
+    <div class="col-md-12">
+        <form asp-action="AddEdit" asp-route-id="@Model.DonationId" onsubmit="return jQueryAjaxPost(this);">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="DonationId" />
+            <input type="hidden" asp-for="Date" />
+            <div class="form-group">
+                <label asp-for="DonationCode" class="control-label"></label>
+                <div class="input-group">
+                    <div class="input-group-prepend">
+                        <div class="input-group-text">#</div>
+                    </div>
+                    <input asp-for="DonationCode" class="form-control" />
+                </div>
+                <span asp-validation-for="DonationCode" class="text-danger"></span>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="DonateurNom" class="control-label"></label>
+                        <input asp-for="DonateurNom" class="form-control" />
+                        <span asp-validation-for="DonateurNom" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="BanqueNom" class="control-label"></label>
+                        <input asp-for="BanqueNom" class="form-control" />
+                        <span asp-validation-for="BanqueNom" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="RIBCode" class="control-label"></label>
+                        <input asp-for="RIBCode" class="form-control" />
+                        <span asp-validation-for="RIBCode" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="form-group">
+                        <label asp-for="Montant" class="control-label"></label>
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <div class="input-group-text">
+                                    <i class="fas fa-dollar-sign"></i>
+                                </div>
+                            </div>
+                            <input asp-for="Montant" class="form-control" />
+                        </div>
+                        <span asp-validation-for="Montant" class="text-danger"></span>
+                    </div>
+                </div>
+            </div>
+            <div class="form-group">
+                <div class="col-md-6 offset-md-3">
+                    <input type="submit" value="Submit" class="btn btn-primary btn-block" />
+                </div>
+            </div>
+        </form>
+    </div>
+</div>

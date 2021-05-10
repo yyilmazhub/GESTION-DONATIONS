@@ -1,0 +1,62 @@
+﻿@model IEnumerable<GestionnaireDonation.Models.DonationModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.DonationCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.DonateurNom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Date)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.BanqueNom)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.RIBCode)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Montant)
+            </th>
+            <th>
+                <a onclick="showInPopup('@Url.Action("AddEdit","Donation",null,Context.Request.Scheme)','Nouvelle donation')" class="btn btn-success text-white"><i class="fas fa-random"></i> Nouvelle donation</a>
+            </th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonationCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.DonateurNom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Date)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.BanqueNom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RIBCode)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Montant)
+                </td>
+                <td>
+                 
+                        <a onclick="showInPopup('@Url.Action("AddEdit","Donation",new {id=item.DonationId},Context.Request.Scheme)','Modifier donation')" class="btn btn-info text-white"><i class="fas fa-pencil-alt"></i> Modifier </a>
+                        <form asp-action="Delete" asp-route-id="@item.DonationId" onsubmit="return jQueryAjaxDelete(this)" class="d-inline">
+                            <input type="hidden" asp-for="@item.DonationId" />
+                            <input type="submit" value="Supprimer" class="btn btn-danger" />
+                        </form>
+                 
+            </tr>
+        }
+    </tbody>
+</table>
